@@ -1,12 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from config import Config
 from models import db, Task
 from datetime import datetime
 from sqlalchemy import or_, and_
+import os
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./static/angular-app')
+
 CORS(app)
 
 app.config.from_object(Config)
@@ -16,7 +18,11 @@ db.init_app(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    return "<h1>abc</h1>"
+        print('path', path)
+        if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+            return send_from_directory(app.static_folder, path)
+        else:
+            return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/create-task', methods=['POST'])
 def create_task():
