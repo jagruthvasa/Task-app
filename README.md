@@ -44,6 +44,12 @@ Welcome to the **Task List web application**!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🌐 Hosted URL
+
+Visit the hosted site [here](https://task-app-jlox.onrender.com/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🗄️ Database Details
 
 **CLI Access:**
